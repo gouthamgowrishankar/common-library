@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="todo-p-api-httpListenerConfig" doc:name="HTTP Listener config" doc:id="f40612da-1267-42f3-9502-6e79793140f6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<sub-flow name="all-status" doc:id="f92bb5ef-57d6-48d9-9564-b479681ff584" >
+		<logger level="INFO" doc:name="Logger" doc:id="25357ff1-2288-4032-ac65-f69b48f83f9a" message="hi"/>
+	</sub-flow>
+</mule>

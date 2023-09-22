@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="status-endpointFlow" doc:id="35e032be-f8e9-4d2c-bc10-8e8bb84b7f1a" >
+		<http:listener doc:name="Listener" doc:id="def2deaa-d6ae-4f0a-a705-fa7028288784" path="/live" config-ref="todo-p-api-httpListenerConfig"/>
+		<ee:transform doc:name="Transform Message" doc:id="5f4b7b04-a508-43d3-a11d-95941c5d733d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"LIVE"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="status-endpointFlow1" doc:id="c1889a92-277b-4dcb-8a07-346009db2159" >
+		<http:listener doc:name="Listener" doc:id="c2c249b2-18ed-4e32-874f-1e45799af1da" config-ref="todo-p-api-httpListenerConfig" path="/allstatus"/>
+		<flow-ref doc:name="Flow Reference" doc:id="de69e4bc-f9a3-4565-8df8-00f1bf5b2d6b" name="all-status"/>
+	</flow>
+</mule>
